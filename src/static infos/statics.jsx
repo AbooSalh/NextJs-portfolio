@@ -25,3 +25,7 @@ export const socials = {
     },
   ],
 };
+export const landPage = {
+  h1: "start Building your dream website now",
+  welcomP: `Explore my professional showcase of dynamic web applications and responsive user interfaces. Let's collaborate to elevate your online presence. Contact me to discuss how I can contribute to your success. Thank you for visiting!`,
+};

@@ -1,6 +1,6 @@
 "use client";
 
-import { socials } from "@/static infos/socials";
+import { socials } from "@/static infos/statics";
 import Link from "next/link";
 import { useState } from "react";
 import "./social.css";
@@ -43,7 +43,7 @@ export default function Navbar() {
         {/* social media links */}
         {socials.data.map((link) => {
           return (
-            <div className="li " key={link.href}>
+            <div className="li hidden md:flex " key={link.href}>
               <Link
                 href={link.href}
                 className="a facebook flex justify-center items-center"
