@@ -95,6 +95,7 @@ export default function Navbar() {
               <Link
                 href={link.href}
                 className="a facebook flex justify-center items-center"
+                target="_blank"
               >
                 <span className="span"></span>
                 <span className="span"></span>

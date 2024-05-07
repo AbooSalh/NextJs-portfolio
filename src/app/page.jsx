@@ -10,7 +10,7 @@ const Homepage = () => {
       className="h-full"
       initial={{ y: "-200vh" }}
       animate={{ y: "0%" }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.8 }}
     >
       <div className="h-[100vh-96px] flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 gap-5 items-center">
         {/* IMAGE CONTAINER */}
@@ -21,7 +21,7 @@ const Homepage = () => {
         <div className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center sm:py-14">
           {/* TITLE */}
           <h1 className="text-4xl md:text-6xl font-bold">
-            Crafting Digital Experiences, Designing Tomorrow.
+            {landPage.h1}
           </h1>
           {/* DESC */}
           <p className="md:text-xl">
