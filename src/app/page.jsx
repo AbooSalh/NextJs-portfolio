@@ -10,9 +10,9 @@ const Homepage = () => {
       className="h-full"
       initial={{ y: "-200vh" }}
       animate={{ y: "0%" }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.5 }}
     >
-      <div className="h-full flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 gap-28">
+      <div className="h-[100vh-96px] flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 gap-5 items-center">
         {/* IMAGE CONTAINER */}
         <div className="h-1/2 lg:h-full lg:w-1/2 relative flex justify-center">
           <Image src="/hero.png" alt="" width={600} height={500} className="object-contain" />
