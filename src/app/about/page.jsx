@@ -3,14 +3,18 @@ import Brain from "@/components/Brain";
 import { landPage } from "@/static infos/statics";
 import { faDownLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { motion, useScroll } from "framer-motion";
+import { motion, useInView, useScroll } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 const skillClasses =
   "rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black";
 const AboutPage = () => {
-    const containerRef = useRef()
-    const { scrollYProgress } = useScroll({ container: containerRef });
+  const containerRef = useRef();
+  const { scrollYProgress } = useScroll({ container: containerRef });
+  const skillRef = useRef();
+  const isSkillRefInView = useInView(skillRef, { margin: "-100px" });
+  const experienceRef = useRef();
+  const isExperienceRefInView = useInView(experienceRef, { margin: "-100px" });
   return (
     <motion.div
       className="h-full w-full"
@@ -19,7 +23,7 @@ const AboutPage = () => {
       transition={{ duration: 1 }}
     >
       {/* container */}
-      <div className="h-full lg:flex lg:overflow-scroll" ref={containerRef} >
+      <div className="h-full lg:flex lg:overflow-scroll" ref={containerRef}>
         {/* text container */}
         <div className="sm:p-8 md:p-12 lg:p-20 xl:p-40 flex flex-col gap-24 md:gap-32 lg:gap-48 xl:gap-64 lg:w-2/3 xl:1/2 lg:pr-0">
           {/* biography container */}
@@ -38,27 +42,46 @@ const AboutPage = () => {
               alt="my signature"
               className="self-end"
             ></Image>
-            <FontAwesomeIcon icon={faDownLong} bounce width="100px" />
+            <FontAwesomeIcon icon={faDownLong} bounce width="100px" size="2x" />
           </div>
           {/* skills container */}
-          <div className=" flex flex-col gap-12 justify-center p-2">
-            <h1 className="font-bold text-2xl">SKILLS</h1>
+          <div
+            className=" flex flex-col gap-12 justify-center p-2"
+            ref={skillRef}
+          >
+            <motion.h1
+              initial={{ x: "-300px" }}
+              animate={isSkillRefInView ? { x: 0 } : {}}
+              transition={{ delay: 0.2 }}
+              className="font-bold text-2xl"
+            >
+              SKILLS
+            </motion.h1>
             {/* skills list */}
             <div className="flex gap-4 flex-wrap z-[100]">
               {landPage.skills.map((skill) => {
                 return (
-                  <div className={skillClasses} key={skill}>
+                  <motion.div className={skillClasses} key={skill}>
                     {skill}
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
             {/* scroll svg  */}
-            <FontAwesomeIcon icon={faDownLong} bounce width="100px" />
+            <FontAwesomeIcon icon={faDownLong} bounce width="100px" size="2x" />
           </div>
           {/* Experience container */}
-          <div className=" flex flex-col gap-12 justify-center p-2 pb-48">
-            <h1 className="font-bold text-2xl">EXPERIENCE</h1>
+          <div
+            className=" flex flex-col gap-12 justify-center p-2 pb-48"
+            ref={experienceRef}
+          >
+            <motion.h1
+              initial={{ x: "-350px" }}
+              animate={isExperienceRefInView ? { x: 0 } : {}}
+              className="font-bold text-2xl"
+            >
+              EXPERIENCE
+            </motion.h1>
             {/* Experience list */}
             <motion.div
               initial={{ x: "-300px" }}

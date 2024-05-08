@@ -51,8 +51,7 @@ export const landPage = {
       company: "AIU",
       location: "Cairo, Egypt",
       date: "June 2021 - Present",
-      description:
-        "description of the project",
+      description: "description of the project",
     },
     {
       title: "Web Developer",
@@ -67,8 +66,53 @@ export const landPage = {
       company: "AIU",
       location: "Cairo, Egypt",
       date: "June 2021 - Present",
-      description:
-        "desc",
+      description: "desc",
+    },
+  ],
+  portfolioProject: [
+    {
+      id: 1,
+      color: "from-red-300 to-blue-300",
+      title: "Dashboard V1",
+      desc: "Pure HTML CSS dashboard",
+      img: "/projectImgs/dashboard-v1.png",
+      link: {
+        code: "https://github.com/AbooSalh/Dashboard-v1",
+        show: "https://aboosalh.github.io/Dashboard-v1/",
+      },
+    },
+    {
+      id: 2,
+      color: "from-blue-300 to-violet-300",
+      title: "Next.js Medium Blog",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+      img: "/projectImgs/dashboard-v1.png",
+      link: {
+        code: "https://github.com/AbooSalh/Dashboard-v1",
+        show: "https://aboosalh.github.io/Dashboard-v1/",
+      },
+    },
+    {
+      id: 3,
+      color: "from-violet-300 to-purple-300",
+      title: "Vanilla Book App",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+      img: "/projectImgs/dashboard-v1.png",
+      link: {
+        code: "https://github.com/AbooSalh/Dashboard-v1",
+        show: "https://aboosalh.github.io/Dashboard-v1/",
+      },
+    },
+    {
+      id: 4,
+      color: "from-purple-300 to-red-300",
+      title: "Spotify Music App",
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+      img: "/projectImgs/dashboard-v1.png",
+      link: {
+        code: "https://github.com/AbooSalh/Dashboard-v1",
+        show: "https://aboosalh.github.io/Dashboard-v1/",
+      },
     },
   ],
 };
