@@ -80,6 +80,10 @@ export const landPage = {
         code: "https://github.com/AbooSalh/Dashboard-v1",
         show: "https://aboosalh.github.io/Dashboard-v1/",
       },
+      techs: [
+        { key: "HTML", desc: "no desc" },
+        { key: "CSS", desc: "no desc" },
+      ],
     },
     {
       id: 2,
@@ -91,6 +95,11 @@ export const landPage = {
         code: "https://github.com/AbooSalh/bootstrap-template-1",
         show: "https://aboosalh.github.io/bootstrap-template-1/",
       },
+      techs: [
+        { key: "HTML", desc: "no desc" },
+        { key: "CSS", desc: "no desc" },
+        { key: "Bootstrap", desc: "no desc" },
+      ],
     },
     {
       id: 3,
@@ -102,6 +111,11 @@ export const landPage = {
         code: "https://github.com/AbooSalh/CRUDS-1",
         show: "https://aboosalh.github.io/CRUDS/",
       },
+      techs: [
+        { key: "HTML", desc: "no desc" },
+        { key: "CSS", desc: "no desc" },
+        { key: "Javascript", desc: "no desc" },
+      ],
     },
     {
       id: 3,
@@ -113,6 +127,12 @@ export const landPage = {
         code: "https://github.com/AbooSalh/React-online-shop-v1",
         show: "https://github.com/AbooSalh/React-online-shop-v1",
       },
+      techs: [
+        { key: "HTML", desc: "no desc" },
+        { key: "CSS", desc: "no desc" },
+        { key: "Javascript", desc: "Ecmascript" },
+        { key: "React.js", desc: "Axios for APIs , php laravel backend" },
+      ],
     },
   ],
 };

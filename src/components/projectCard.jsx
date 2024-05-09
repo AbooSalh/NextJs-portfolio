@@ -1,56 +1,49 @@
-"use client";
 import Image from "next/image";
-import React from "react";
-import { CardBody, CardContainer, CardItem } from "../components/UI/3d-card";
-import Link from "next/link";
-
-export function ProjectCard({ id, title, desc, img, link }) {
+import "./social.css";
+export const ProjectCard = ({ id, title, desc, img, link, techs }) => {
   return (
-    <CardContainer className="inter-var ">
-      <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
-        <CardItem
-          translateZ="50"
-          className="text-xl font-bold text-neutral-600 dark:text-white"
-        >
-          {title}
-        </CardItem>
-        <CardItem
-          as="p"
-          translateZ="60"
-          className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-        >
-          {desc}
-        </CardItem>
-        <CardItem translateZ="100" className="w-full mt-4">
-          <Image
-            src={img}
-            height="1000"
-            width="1000"
-            className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-            alt="thumbnail"
-          />
-        </CardItem>
-        <div className="flex justify-between items-center mt-20">
-          <CardItem
-            translateZ={20}
-            as={Link}
+    <div id="container" className="flex card flex-col  w-[550px] ">
+      <div className="product-details flex flex-col gap-1 justify-between w-full">
+        <div className="text-4xl xmd:text-3xl">{title}</div>
+        <p className="information w-full ">{desc}</p>
+        <div className="flex w-full justify-between mt-10">
+          <a
             href={link.code}
-            target="__blank"
-            className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+            target="_blank"
+            className="rounded bg-gray-300 p-2 hover:bg-black  hover:text-white transition w-[40%] text-center"
           >
-            Code
-          </CardItem>
-          <CardItem
-            translateZ={20}
-            as={Link}
-            target="__blank"
+            Github
+          </a>
+          <a
             href={link.show}
-            className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+            target="_blank"
+            className="rounded bg-gray-300 p-2 hover:bg-black  hover:text-white transition w-[40%] text-center"
           >
-            Show
-          </CardItem>
+            Demo
+          </a>
         </div>
-      </CardBody>
-    </CardContainer>
+      </div>
+      <div className="product-image w-full">
+        <Image
+          src={img}
+          width={256}
+          height={260}
+          alt="hi"
+          className="w-full"
+        ></Image>
+        <div className="info">
+          <h2 className="text-2xl my-4">Technologies</h2>
+          <ul className="ml-6">
+            {techs?.map((tech) => {
+              return (
+                <li key={tech.key}>
+                  <strong>{tech.key} : </strong> {tech.desc}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </div>
   );
-}
+};
