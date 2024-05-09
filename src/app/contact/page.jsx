@@ -2,17 +2,34 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 const text = "Say hello";
 const ContactPage = () => {
-  const [success, setSuccess] = useState();
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
-  const [error, setErorr] = useState();
+  const schema = yup.object().shape({
+    message: yup.string().required("Pls Write us a message"),
+    email: yup.string().email("Write a valid email").required("Email required"),
+  });
+
   const form = useRef();
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    setErorr(false);
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  // submit handler
+  const onSubmitHandler = (e) => {
     setSuccess(false);
+    setError(false);
+
     emailjs
       .sendForm(
         process.env.NEXT_PUBLIC_SERVICE_ID,
@@ -28,9 +45,10 @@ const ContactPage = () => {
           form.current.reset();
         },
         (error) => {
-          setErorr(true);
+          setError(true);
         }
       );
+    reset();
   };
   return (
     <motion.div
@@ -59,19 +77,22 @@ const ContactPage = () => {
         </div>
         {/* form container */}
         <form
-        onSubmit={sendEmail}
+          noValidate
+          onSubmit={handleSubmit(onSubmitHandler)}
           ref={form}
           className="h-1/2 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-8 justify-center p-24"
         >
           <span>Dear Ahmed Saleh</span>
           <textarea
+            {...register("message")}
             row={6}
             className="bg-transparent border-b-2 border-b-black outline-none resize-none h-56"
-            name="user_message"
+            name="message"
           />
           <label>Email</label>
           <input
-            name="user_email"
+            {...register("email")}
+            name="email"
             type="email"
             className="bg-transparent border-b-2 border-b-black outline-none resize-none "
           />
@@ -82,6 +103,13 @@ const ContactPage = () => {
           {success && (
             <span className="text-green-600 font-semibold">
               your message has been sent successfully!
+            </span>
+          )}
+          {errors && (
+            <span className="text-red-600 font-semibold">
+              {errors?.email?.message}
+              <br />
+              {errors?.message?.message}
             </span>
           )}
           {error && (

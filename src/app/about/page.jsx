@@ -1,6 +1,6 @@
 "use client";
-import Brain from "@/components/Brain";
-import { landPage } from "@/static infos/statics";
+import Brain from "../../components/Brain";
+import { landPage } from "../../static infos/statics";
 import { faDownLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion, useInView, useScroll } from "framer-motion";

@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { ProjectCard } from "../../components/projectCard";
 import { landPage } from "../../static infos/statics";
 
-const Projects = () => {
+const PPP = () => {
   return (
     <motion.div
-      className="h-fit flex flex-wrap gap-4"
+      className="h-fit flex flex-wrap gap-4 lg:hidden md:hidden sm:block"
       initial={{ y: "-200vh" }}
       animate={{ y: "0%" }}
       transition={{ duration: 0.8 }}
@@ -19,4 +19,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default PPP;

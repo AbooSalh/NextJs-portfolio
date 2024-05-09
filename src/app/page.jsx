@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { landPage } from "@/static infos/statics";
+import { landPage } from "../static infos/statics";
 import Link from "next/link";
 
 const Homepage = () => {

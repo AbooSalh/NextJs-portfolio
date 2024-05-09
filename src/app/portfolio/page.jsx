@@ -1,11 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
-import { PortfolioCard } from "@/components/portfolioCard";
-import { landPage } from "@/static infos/statics";
+
+import { PortfolioCard } from "../../components/portfolioCard";
+import PPP, { ProjectsPage } from "../../components/pages/PPP";
+import { landPage } from "../../static infos/statics";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+
 const screesSizes = {
   sm: 640,
   md: 768,
@@ -13,27 +16,20 @@ const screesSizes = {
   xl: 1280,
   "2xl": 1536,
 };
+
 const PortfolioPage = () => {
   const ref = useRef();
-  const [width, setWidth] = useState(window.innerWidth);
   const router = useRouter();
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
   const { scrollYProgress } = useScroll({ target: ref });
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
-  if (width >= screesSizes.lg) {
-    return (
+
+  // Check for width on the client-side using conditional rendering
+
+  return (
+    <>
+      <PPP />
       <motion.div
-        className="h-full"
+        className="h-full sm:hidden lg:block md:block xsm:hidden"
         initial={{ y: "-200vh" }}
         animate={{ y: "0%" }}
         transition={{ duration: 1 }}
@@ -45,31 +41,29 @@ const PortfolioPage = () => {
           <div className="sticky top-0 flex h-screen gap-4 items-center overflow-hidden">
             <motion.div style={{ x }} className="flex">
               <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-r from-purple-300 to-red-300" />
-              {landPage.portfolioProject.map((item, i) => {
-                return (
-                  <div
-                    key={i}
-                    className={`h-screen w-screen flex items-center justify-center bg-gradient-to-r ${item.color} z-[100]`}
-                  >
-                    <PortfolioCard
-                      title={item.title}
-                      desc={item.desc}
-                      id={item.id}
-                      img={item.img}
-                      link={{
-                        code: item.link.code,
-                        show: item.link.show,
-                      }}
-                    />
-                  </div>
-                );
-              })}
+              {landPage.portfolioProject.map((item, i) => (
+                <div
+                  key={i}
+                  className={`h-screen w-screen flex items-center justify-center bg-gradient-to-r ${item.color} z-[100]`}
+                >
+                  <PortfolioCard
+                    title={item.title}
+                    desc={item.desc}
+                    id={item.id}
+                    img={item.img}
+                    link={{
+                      code: item.link.code,
+                      show: item.link.show,
+                    }}
+                  />
+                </div>
+              ))}
             </motion.div>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex flex-wrap">
           <div className="w-full h-screen flex flex-col gap-16 items-center justify-center text-center">
-            <h1 className="text-8xl">Do you have a project?</h1>
+            <h1 className="text-5xl">Do you have a project?</h1>
             <div className="relative">
               <motion.svg
                 animate={{ rotate: -360 }}
@@ -98,7 +92,7 @@ const PortfolioPage = () => {
             </div>
           </div>
           <div className="w-full h-screen flex flex-col gap-16 items-center justify-center text-center">
-            <h1 className="text-8xl">I'm not convinced yet, show me more !</h1>
+            <h1 className="text-5xl">I'm not convinced yet, show me more !</h1>
             <div className="relative">
               <motion.svg
                 animate={{ rotate: -360 }}
@@ -128,10 +122,7 @@ const PortfolioPage = () => {
           </div>
         </div>
       </motion.div>
-    );
-  } else {
-    router.push("/projects");
-  }
+    </>
+  );
 };
-
 export default PortfolioPage;

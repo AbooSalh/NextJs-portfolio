@@ -1,6 +1,6 @@
 "use client";
 
-import { socials } from "@/static infos/statics";
+import { socials } from "../static infos/statics";
 import Link from "next/link";
 import { useState } from "react";
 import "./social.css";
@@ -13,13 +13,13 @@ export default function Navbar() {
   const listItemVariants = {
     closed: {
       x: -10,
-      opacity: 0
+      opacity: 0,
     },
     open: {
       x: 0,
       opacity: 1,
     },
-  }
+  };
   const listVariants = {
     closed: {
       x: "100vw",
@@ -27,7 +27,7 @@ export default function Navbar() {
     open: {
       x: 0,
       transition: {
-        when:"beforeChildren",
+        when: "beforeChildren",
         staggerChildren: 0.2,
       },
     },
@@ -141,13 +141,18 @@ export default function Navbar() {
             variants={listVariants}
             initial="closed"
             animate="open"
-            style={{width:"100%"}}
+            style={{ width: "100%" }}
             className="absolute top-0 left-0 h-screen bg-black text-white flex flex-col items-center justify-center gap-9 text-4xl z-40 "
           >
             {links.map((link) => {
               return (
                 <motion.div key={link.title} variants={listItemVariants}>
-                  <Link href={link.href}>{link.name}</Link>
+                  <Link
+                    onClick={() => setOpen((prev) => !prev)}
+                    href={link.href}
+                  >
+                    {link.name}
+                  </Link>
                 </motion.div>
               );
             })}
