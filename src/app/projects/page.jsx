@@ -7,7 +7,7 @@ import { landPage } from "../../static infos/statics";
 const Projects = () => {
   return (
     <motion.div
-      className="h-fit flex flex-wrap gap-4"
+      className="h-fit flex flex-wrap gap-4 justify-evenly"
       initial={{ y: "-200vh" }}
       animate={{ y: "0%" }}
       transition={{ duration: 0.8 }}

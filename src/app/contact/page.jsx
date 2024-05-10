@@ -83,29 +83,35 @@ const ContactPage = () => {
           noValidate
           onSubmit={handleSubmit(onSubmitHandler)}
           ref={form}
-          className="h-1/2 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-8 justify-center p-24"
+          className="h-1/2 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-5 justify-center p-16"
         >
-          <span>Dear Ahmed Saleh</span>
-          <textarea
-            {...register("message")}
-            row={6}
-            className="bg-transparent border-b-2 border-b-black outline-none resize-none h-56"
-            name="message"
-          />
-          <label>Email</label>
-          <input
-            {...register("email")}
-            name="email"
-            type="email"
-            className="bg-transparent border-b-2 border-b-black outline-none resize-none "
-          />
-          <label>name</label>
-          <input
-            {...register("name")}
-            name="name"
-            type="text"
-            className="bg-transparent border-b-2 border-b-black outline-none resize-none "
-          />
+          <div className="flex flex-col">
+            <span>Dear Ahmed Saleh</span>
+            <textarea
+              {...register("message")}
+              row={6}
+              className="bg-transparent border-b-2 border-b-black outline-none resize-none h-56"
+              name="message"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label>Email :</label>
+            <input
+              {...register("email")}
+              name="email"
+              type="email"
+              className="bg-transparent border-b-2 border-b-black outline-none resize-none "
+            />
+          </div>
+          <div className="flex flex-col">
+            <label>Name :</label>
+            <input
+              {...register("name")}
+              name="name"
+              type="text"
+              className="bg-transparent border-b-2 border-b-black outline-none resize-none "
+            />
+          </div>
           <span>Regards</span>
           <button className="bg-purple-200 rounded font-semibold text-gray-600 p-3">
             Send
