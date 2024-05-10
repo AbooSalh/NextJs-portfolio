@@ -12,7 +12,8 @@ const ContactPage = () => {
   const [error, setError] = useState(false);
 
   const schema = yup.object().shape({
-    message: yup.string().required("Pls Write us a message"),
+    message: yup.string().required("Pls Write a message"),
+    name: yup.string().required("Pls enter your name"),
     email: yup.string().email("Write a valid email").required("Email required"),
   });
 
@@ -22,6 +23,7 @@ const ContactPage = () => {
     reset,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -29,15 +31,16 @@ const ContactPage = () => {
   const onSubmitHandler = (e) => {
     setSuccess(false);
     setError(false);
-
     emailjs
-      .sendForm(
+      .send(
         process.env.NEXT_PUBLIC_SERVICE_ID,
         process.env.NEXT_PUBLIC_TEMPLATE_ID,
-        form.current,
         {
-          publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
-        }
+          from_mail: watch("email"),
+          from_name: watch("name"),
+          message: watch("message"),
+        },
+        process.env.NEXT_PUBLIC_PUBLIC_KEY
       )
       .then(
         () => {
@@ -94,6 +97,13 @@ const ContactPage = () => {
             {...register("email")}
             name="email"
             type="email"
+            className="bg-transparent border-b-2 border-b-black outline-none resize-none "
+          />
+          <label>name</label>
+          <input
+            {...register("name")}
+            name="name"
+            type="text"
             className="bg-transparent border-b-2 border-b-black outline-none resize-none "
           />
           <span>Regards</span>
